@@ -1,0 +1,13 @@
+import ProductCard from "./ProductCard";
+
+const ProductList = ({ products, addToCart }) => {
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
+      {products.map(p => (
+        <ProductCard key={p.id} product={p} addToCart={addToCart} />
+      ))}
+    </div>
+  );
+};
+
+export default ProductList;
