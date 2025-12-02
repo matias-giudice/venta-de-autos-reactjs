@@ -8,9 +8,9 @@ const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!form.nombre || !form.email || !form.mensaje) {
-      alert("Todos los campos son obligatorios");
+      toast.success("Todos los campos son obligatorios");
     } else {
-      alert("Formulario enviado!");
+      toast.success("Formulario enviado!");
       setForm({ nombre: "", email: "", mensaje: "" });
     }
   };

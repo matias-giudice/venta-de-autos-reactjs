@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -18,6 +19,11 @@ const Login = () => {
 
   return (
     <div className="login-container">
+      <Helmet>
+        <title>Login - Venta de Autos</title>
+        <meta name="description" content="Accede a tu cuenta para administrar tus productos o realizar compras." />
+      </Helmet>
+      
       <h2>Iniciar Sesión</h2>
       <form onSubmit={handleSubmit}>
         <input

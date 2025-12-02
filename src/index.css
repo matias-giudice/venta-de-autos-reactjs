@@ -88,6 +88,31 @@ section {
   justify-content: center;
 }
 
+.productos-grilla .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.productos-grilla .card img {
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.productos-grilla .card h3 {
+  margin: 10px 0 5px 0;
+}
+
+.productos-grilla .card p {
+  margin: 0 0 10px 0;
+}
+
+.productos-grilla .card button {
+  margin-top: auto;
+}
+
 .card {
   background-color: #444654;
   color: #ffffff;

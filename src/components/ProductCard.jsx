@@ -1,4 +1,5 @@
 import { useCarrito } from "../context/CarritoContext";
+import { FaCartPlus } from "react-icons/fa";
 
 const ProductCard = ({ product }) => {
   const { agregarAlCarrito } = useCarrito();
@@ -25,22 +26,15 @@ const ProductCard = ({ product }) => {
           borderRadius: "4px",
         }}
       />
-
+      
       <h3>{product.name}</h3>
       <p>${parseFloat(product.price).toLocaleString()}</p>
 
       <button
         onClick={() => agregarAlCarrito(product)}
-        style={{
-          padding: "10px",
-          backgroundColor: "#4CAF50",
-          color: "#fff",
-          border: "none",
-          borderRadius: "4px",
-          cursor: "pointer",
-        }}
+        className="btn btn-success"
       >
-        Agregar al carrito
+        <FaCartPlus /> Agregar al carrito
       </button>
     </div>
   );

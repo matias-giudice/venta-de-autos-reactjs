@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import ProductList from "../components/ProductList";
 import { useCarrito } from "../context/CarritoContext";
@@ -33,6 +34,11 @@ const Products = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Productos - Venta de Autos</title>
+        <meta name="description" content="Descubre todos nuestros autos disponibles para la venta." />
+      </Helmet>
+      
       <ProductList products={products} />
     </div>
   );

@@ -1,4 +1,6 @@
+import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
+import { FaTrash, FaEdit } from "react-icons/fa";
 import ProductForm from "../components/ProductForm";
 import ConfirmModal from "../components/ConfirmModal";
 
@@ -42,7 +44,7 @@ const AdminProducts = () => {
         const newProduct = await res.json();
         setProducts((prev) => [...prev, newProduct]);
         } catch (err) {
-        alert("Error agregando producto");
+        toast.success("Error agregando producto");
         }
     };
 
@@ -57,7 +59,7 @@ const AdminProducts = () => {
         const updated = await res.json();
         setProducts((prev) => prev.map((p) => (p.id === id ? updated : p)));
         } catch (err) {
-        alert("Error actualizando producto");
+        toast.success("Error actualizando producto");
         }
     };
 
@@ -83,6 +85,11 @@ const AdminProducts = () => {
 
     return (
         <div style={{ padding: "20px" }}>
+            <Helmet>
+                <title>Administración - Venta de Autos</title>
+                <meta name="description" content="Gestión completa del catálogo de productos para administradores." />
+            </Helmet>
+
             <h2>Gestión de Productos</h2>
             <button onClick={() => { setEditingProduct(null); setShowForm(true); }}>
                 Agregar Producto
@@ -121,10 +128,10 @@ const AdminProducts = () => {
                         </td>
                         <td>
                         <button className="btn-editar" onClick={() => { setEditingProduct(p); setShowForm(true); }}>
-                            Editar
+                            <FaEdit /> Editar
                         </button>
                         <button className="btn-eliminar" onClick={() => handleDelete(p.id)} style={{ marginLeft: "10px" }}>
-                            Eliminar
+                            <FaTrash /> Eliminar
                         </button>
                         </td>
                     </tr>
@@ -139,7 +146,7 @@ const AdminProducts = () => {
                     await fetch(`${API_URL}/${productToDelete}`, { method: "DELETE" });
                     setProducts((prev) => prev.filter((p) => p.id !== productToDelete));
                     } catch (err) {
-                    alert("Error eliminando producto");
+                    toast.success("Error eliminando producto");
                     } finally {
                     setShowConfirm(false);
                     setProductToDelete(null);

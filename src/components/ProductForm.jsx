@@ -16,17 +16,17 @@ const ProductForm = ({ initialData = null, onSuccess, onCancel }) => {
 
     //Validaciones
     if (!form.name) {
-      alert("Nombre obligatorio");
+      toast.success("Nombre obligatorio");
       return;
     }
 
     if (!form.price || Number(form.price) <= 0) {
-      alert("Precio debe ser mayor a 0");
+      toast.success("Precio debe ser mayor a 0");
       return;
     }
 
     if (!form.image) {
-      alert("Imagen obligatoria");
+      toast.success("Imagen obligatoria");
       return;
     }
 

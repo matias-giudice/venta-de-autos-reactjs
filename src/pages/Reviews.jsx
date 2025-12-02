@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useState, useEffect } from "react";
 import Review from "../components/Review";
 
@@ -27,6 +28,11 @@ const Reviews = () => {
 
   return (
     <div className="resenias-grid">
+      <Helmet>
+        <title>Reseñas - Venta de Autos</title>
+        <meta name="description" content="Lee las opiniones y reseñas de nuestros clientes sobre los autos." />
+      </Helmet>
+      
       {reviews.map(r => (
         <Review key={r.id} review={r} />
       ))}
