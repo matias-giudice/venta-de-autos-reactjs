@@ -9,6 +9,9 @@ const Header = () => {
       <h1>Venta de Autos</h1>
       <nav>
         <ul style={{ display: "flex", justifyContent: "center", gap: "15px", listStyle: "none" }}>
+          {user?.email === "admin@gmail.com" && (
+            <li><Link to="/admin" style={{backgroundColor: "#444654", color: "white", padding: "6px 10px", borderRadius: "4px", textDecoration: "none",}}>Admin</Link></li>
+          )}
           <li><Link to="/">Inicio</Link></li>
           <li><Link to="/productos">Autos</Link></li>
           <li><Link to="/carrito">Carrito</Link></li>
