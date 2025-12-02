@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ContactForm = () => {
   const [form, setForm] = useState({ nombre: "", email: "", mensaje: "" });
@@ -8,7 +9,7 @@ const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     if (!form.nombre || !form.email || !form.mensaje) {
-      toast.success("Todos los campos son obligatorios");
+      toast.error("Todos los campos son obligatorios");
     } else {
       toast.success("Formulario enviado!");
       setForm({ nombre: "", email: "", mensaje: "" });

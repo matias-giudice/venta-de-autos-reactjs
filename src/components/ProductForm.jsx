@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ProductForm = ({ initialData = null, onSuccess, onCancel }) => {
   const [form, setForm] = useState({
@@ -16,23 +17,24 @@ const ProductForm = ({ initialData = null, onSuccess, onCancel }) => {
 
     //Validaciones
     if (!form.name) {
-      toast.success("Nombre obligatorio");
+      toast.error("Nombre obligatorio");
       return;
     }
 
     if (!form.price || Number(form.price) <= 0) {
-      toast.success("Precio debe ser mayor a 0");
+      toast.error("Precio debe ser mayor a 0");
       return;
     }
 
     if (!form.image) {
-      toast.success("Imagen obligatoria");
+      toast.error("Imagen obligatoria");
       return;
     }
 
     const data = { ...form, name: form.name.toUpperCase(), alt: form.name.toUpperCase() }; //Convertimos nombre a mayúsculas
 
     onSuccess(data); //Llamamos al callback que decide si es POST o PUT
+    toast.success("Producto guardado correctamente");
   };
 
   return (

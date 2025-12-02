@@ -44,7 +44,7 @@ const AdminProducts = () => {
         const newProduct = await res.json();
         setProducts((prev) => [...prev, newProduct]);
         } catch (err) {
-        toast.success("Error agregando producto");
+        toast.error("Error agregando producto");
         }
     };
 
@@ -59,7 +59,7 @@ const AdminProducts = () => {
         const updated = await res.json();
         setProducts((prev) => prev.map((p) => (p.id === id ? updated : p)));
         } catch (err) {
-        toast.success("Error actualizando producto");
+        toast.error("Error actualizando producto");
         }
     };
 
@@ -146,7 +146,7 @@ const AdminProducts = () => {
                     await fetch(`${API_URL}/${productToDelete}`, { method: "DELETE" });
                     setProducts((prev) => prev.filter((p) => p.id !== productToDelete));
                     } catch (err) {
-                    toast.success("Error eliminando producto");
+                    toast.error("Error eliminando producto");
                     } finally {
                     setShowConfirm(false);
                     setProductToDelete(null);
