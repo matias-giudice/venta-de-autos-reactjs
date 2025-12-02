@@ -1,19 +1,18 @@
 import Cart from "../components/Cart";
+import { useCarrito } from "../context/CarritoContext";
 
-const Carrito = ({ cart, setCart }) => {
+const Carrito = () => {
+  const {
+    cart,
+    modificarCantidad,
+    eliminarProducto,
+  } = useCarrito();
+
   return (
     <Cart
       cart={cart}
-      modificarCantidad={(id, cambio) =>
-        setCart(prev =>
-          prev
-            .map(p => (p.id === id ? { ...p, cantidad: p.cantidad + cambio } : p))
-            .filter(p => p.cantidad > 0)
-        )
-      }
-      eliminarProducto={id =>
-        setCart(prev => prev.filter(p => p.id !== id))
-      }
+      modificarCantidad={modificarCantidad}
+      eliminarProducto={eliminarProducto}
     />
   );
 };
